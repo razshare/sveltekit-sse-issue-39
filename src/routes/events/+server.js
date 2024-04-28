@@ -1,4 +1,4 @@
-import { beacon, events, extend } from 'sveltekit-sse';
+import { findBeacon, events, extend } from 'sveltekit-sse';
 
 /**
  * @typedef Quote
@@ -83,10 +83,10 @@ async function dumpData(lang, { emit, lock }) {
 }
 
 export function POST({ request, url }) {
-  const xSseId = beacon({ request });
-  if (xSseId) {
+  const beacon = findBeacon({ request });
+  if (beacon) {
     console.log('Stream extended.');
-    return extend({ xSseId });
+    return extend({ beacon });
   }
 
   return events({

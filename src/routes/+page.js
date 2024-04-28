@@ -26,11 +26,6 @@ export function load({ url }) {
     return previous;
   });
 
-  // setTimeout(function disconnect() {
-  //   console.log('Closing manually...')
-  //   connection.close()
-  // }, 3000)
-
   return {
     quote
   };
